@@ -68,7 +68,6 @@ public class DatabaseSQLite implements IDatabase {
 
 	@Override
 	public void delete(String tableName, Object primaryKey) {
-		// TODO Auto-generated method stub
 		
 	}
 
