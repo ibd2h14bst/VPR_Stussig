@@ -15,7 +15,6 @@ create table Dozenten (
 
 create table Klassen(
     Klassenbezeichnung varchar(8) Primary Key,
-    AnzahlSchüler number(2),
     Klassendozent varchar(3),
     Foreign Key (Klassendozent) references Dozenten
 );
