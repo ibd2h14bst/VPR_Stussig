@@ -20,9 +20,8 @@ public class Student {
 	}
 
 	public static ArrayList<Student> getByClassName(String className) {
-		HashMap<String, Object> fields = new HashMap<String, Object>();
-		fields.put("Klasse", className);
-		ArrayList<HashMap<String, Object>> entries = database.get("student", fields);
+		String where = "NAME LIKE MÜLLER";
+		ArrayList<HashMap<String, Object>> entries = database.get("student", where);
 		ArrayList<Student> students = new ArrayList<Student>();
 		for (int i = 0; i < entries.size(); i++) {
 			Student s = new Student();
