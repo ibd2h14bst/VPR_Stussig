@@ -69,7 +69,7 @@ public class DatabaseSQLite implements IDatabase {
 
 	@Override
 	public ArrayList<HashMap<String, Object>> get(String tableName) {
-		String sql = "SELECT * From " + tableName;
+		String sql = "SELECT * From " + tableName + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -78,7 +78,7 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public ArrayList<HashMap<String, Object>> get(String tableName, String where ) {
 		String sql = "SELECT * From " + tableName + 
-						" WHERE " + where;
+						" WHERE " + where + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -87,7 +87,16 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public ArrayList<HashMap<String, Object>> get(String tableName, String key, String operator, String value ) {
 		String sql = "SELECT * From " + tableName + 
-						" WHERE " + key + " " + operator + " " + value;
+						" WHERE " + key + " " + operator + " '" + value +"';";
+		ArrayList<HashMap<String, Object>> result = internalGet(sql);
+		
+		return result;
+	}
+
+	@Override
+	public ArrayList<HashMap<String, Object>> get(String tableName, String key, String operator, int value ) {
+		String sql = "SELECT * From " + tableName + 
+						" WHERE " + key + " " + operator + " " + value + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -95,7 +104,7 @@ public class DatabaseSQLite implements IDatabase {
 	
 	@Override
 	public ArrayList<HashMap<String, Object>> count(String tableName) {
-		String sql = "SELECT COUNT (*) From " + tableName;
+		String sql = "SELECT COUNT (*) From " + tableName + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -104,7 +113,7 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public ArrayList<HashMap<String, Object>> count(String tableName, String where ) {
 		String sql = "SELECT COUNT (*) From " + tableName + 
-						" WHERE " + where;
+						" WHERE " + where + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -113,7 +122,7 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public ArrayList<HashMap<String, Object>> count(String tableName, String key, String operator, String value ) {
 		String sql = "SELECT COUNT (*) From " + tableName + 
-						" WHERE " + key + " " + operator + " " + value;
+						" WHERE " + key + " " + operator + " " + value + ";";
 		ArrayList<HashMap<String, Object>> result = internalGet(sql);
 		
 		return result;
@@ -141,7 +150,7 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public void delete(String tableName, String where) {
 		String sql = "DELETE From " + tableName + 
-				" WHERE " + where;
+				" WHERE " + where + ";";
 		try {
 			execute(sql);
 		} catch (SQLException e) {
@@ -152,7 +161,7 @@ public class DatabaseSQLite implements IDatabase {
 	@Override
 	public void delete(String tableName, String key, String operator, String value ) {
 		String sql = "DELETE From " + tableName + 
-				" WHERE " + key + " " + operator + " " + value;
+				" WHERE " + key + " " + operator + " " + value + ";";
 		try {
 			execute(sql);
 		} catch (SQLException e) {
@@ -165,7 +174,7 @@ public class DatabaseSQLite implements IDatabase {
 		String sql = "UPDATE " + tableName +
 					" SET " + key +
 					" = " + value+
-					" WHERE " + where;
+					" WHERE " + where + ";";
 		try {
 			execute(sql);
 		} catch (SQLException e) {

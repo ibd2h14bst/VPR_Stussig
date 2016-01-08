@@ -39,7 +39,7 @@ create table Aufgabenpool(
 create table Aufgaben(
     AufgabenId number(3) Primary Key,
     Bezeichnung varchar(20),
-    Beschreibung long,
+    Beschreibung varchar(1280),
     Kategorie varchar(10),
     Bearbeitungszeit varchar(5),
     Pool number,
